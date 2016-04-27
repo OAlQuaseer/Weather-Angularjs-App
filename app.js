@@ -2,7 +2,7 @@
 var myApp = angular.module("weatherApp", ["ngRoute","ngResource"]);
 
 
-//Configuration
+//Configuration 
 myApp.config(function($routeProvider){
     
     $routeProvider
@@ -18,17 +18,28 @@ myApp.config(function($routeProvider){
     })    
 });
 
+//Services
+myApp.service("cityService",function(){
+    
+    this.cityName = 'Irvine, CA'
+    
+});
 
 //Controllers
-myApp.controller('homeController',['$scope',function($scope){
+myApp.controller('homeController',['$scope','cityService',function($scope, cityService){
     
+    $scope.cityName = cityService.cityName;
     
+    $scope.$watch('cityName',function(){
+        
+        cityService.cityName = $scope.cityName;
+    });
     
     
 }]);
-myApp.controller('forecastController',['$scope',function($scope){
+myApp.controller('forecastController',['$scope','cityService',function($scope, cityService){
     
     
-    
+     $scope.cityName = cityService.cityName;
     
 }]);
