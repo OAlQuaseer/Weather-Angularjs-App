@@ -65,3 +65,20 @@ myApp.controller('forecastController',['$scope','$routeParams','$resource','city
 
     
 }]);
+
+// Directives 
+myApp.directive('tempSection', function(){
+    
+    return {
+        
+        restrict:'E',
+        templateUrl:'directives/tempSection.html',
+        replace: true,
+        scope: {
+            weatherDay: "=",
+            convertToStandard:"&",
+            convertToDate: "&",
+            dateFormat:"@"
+        }
+    }
+});

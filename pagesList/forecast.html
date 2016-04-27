@@ -14,16 +14,8 @@ Days: <a href="#/forecast/3" ng-class="{'bg-primary': days === '3'}">3</a> | <a 
 <div ng-repeat="w in weatherResult.list">
     <div class="row">
         <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">{{ convertToDate(w.dt) | date: 'MMM d, y' }}</h3>
-                </div>
-                <div class="panel-body">
-                    <div>Daytime temperature: {{ convertToFahrenheit(w.temp.day) }}</div>
-                    <div>Nighttime temperature: {{ convertToFahrenheit(w.temp.night) }}</div>
-                </div>
-                
-            </div>
+            <temp-section weather-day="w" convert-to-standard="convertToFahrenheit(degK)"
+                          convert-to-date="convertToDate(dt)" date-format="MMM d, y"></temp-section>
         </div>
     </div>
 </div>
